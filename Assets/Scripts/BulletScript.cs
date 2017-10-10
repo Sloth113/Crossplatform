@@ -6,10 +6,9 @@ public class BulletScript : MonoBehaviour {
     private Vector3 m_startPos;
     public float lifeDist = 100;
     public float speed = 50;
-
     public GameObject particles;
-    // Use this for initialization
-    void Start () {
+	// Use this for initialization
+	void Start () {
         m_startPos = transform.position;
 	}
 	
@@ -24,13 +23,12 @@ public class BulletScript : MonoBehaviour {
 
     void OnCollisionEnter(Collision c) {
         if(c.transform.tag == "Enemy") {
+            //Do destroy effects on enemy
             Destroy(c.gameObject);
-
         }
-        Instantiate<GameObject>(particles, this.transform.position, this.transform.rotation);
-        particles.GetComponent<ParticleSystem>().Emit(10);
+        GameObject explosion = Instantiate<GameObject>(particles, this.transform.position, this.transform.rotation);
 
+        explosion.GetComponent<ParticleSystem>().Emit(10);
         Destroy(gameObject);
     }
-
 }

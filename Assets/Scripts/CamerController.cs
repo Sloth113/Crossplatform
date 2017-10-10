@@ -16,6 +16,7 @@ public class CamerController : MonoBehaviour {
         transform.position = player.transform.position - m_offset;
         Debug.DrawLine(transform.position, player.transform.position, Color.red);
 
+        //Debug lines
         if (Input.GetMouseButton(0)) {
             Plane playersYPlane = new Plane(Vector3.up, player.transform.position);
             Vector3 mousePos = Input.mousePosition;
